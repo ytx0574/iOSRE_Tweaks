@@ -1,0 +1,9 @@
+Package: com.johnson.huochairen
+Name: 火柴人联盟-内购
+Depends: mobilesubstrate
+Version: 0.0.1
+Architecture: iphoneos-arm
+Description: 最近玩得一个游戏, 刚好在学习越狱开发. 就写了这么个插件. 连不联网均可内购.
+Maintainer: johnson
+Author: johnson
+Section: Tweaks

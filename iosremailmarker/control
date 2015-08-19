@@ -1,0 +1,9 @@
+Package: com.johnson.mail
+Name: iOSREMailMarker
+Depends: mobilesubstrate
+Version: 0.0.1
+Architecture: iphoneos-arm
+Description: An awesome MobileSubstrate tweak!
+Maintainer: johnson
+Author: johnson
+Section: Tweaks

@@ -1,0 +1,10 @@
+Package: com.johnson.ttkp
+Name: ttkp
+Depends: mobilesubstrate
+Architecture: iphoneos-arm
+Description: An awesome MobileSubstrate tweak!
+Maintainer: johnson
+Author: johnson
+Section: Tweaks
+Version: 0.0.1-138
+Installed-Size: 136
