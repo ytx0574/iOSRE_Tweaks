@@ -1,0 +1,10 @@
+Package: com.johnson.weixinhongbao
+Name: 微信抢红包
+Depends: mobilesubstrate
+Architecture: iphoneos-arm
+Description: 自己弄的抢红包插件, 必须保持停留在微信聊天内容页才能自动抢红包.   在微信设置->通用->听筒模式开了之后自动抢, 不开就是手动抢, 但是手动抢的同时自动拆开红包.  也就是不开的时候, 要自己点一下.
+Maintainer: Johnson
+Author: 笑你妹c
+Section: Tweaks
+Version: 0.0.1-64
+Installed-Size: 136
