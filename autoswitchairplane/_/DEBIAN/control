@@ -1,0 +1,10 @@
+Package: com.johnson.autoswitchairplane
+Name: autoswitchairplane
+Depends: mobilesubstrate
+Architecture: iphoneos-arm
+Description: An awesome MobileSubstrate tweak!
+Maintainer: 笑你妹c
+Author: 笑你妹c
+Section: Tweaks
+Version: 0.0.1-5
+Installed-Size: 136

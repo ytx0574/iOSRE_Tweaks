@@ -50,9 +50,9 @@ id value = %orig;
 
 UIButton *openRedEnvelopesButton = [self valueForKey:@"openRedEnvelopesButton"];
 if (openRedEnvelopesButton.hidden == NO) {
-    [self OnOpenRedEnvelopes];  //拆包
-    [self OnCancelButtonDone];  //取消显示页面
-    NSLog(@"---------------------------笑你妹c 自动帮你拆红包---------------------------");
+[self OnOpenRedEnvelopes];  //拆包
+[self OnCancelButtonDone];  //取消显示页面
+//NSLog(@"---------------------------笑你妹c 自动帮你拆红包---------------------------");
 }
 
 
@@ -63,7 +63,7 @@ return value;
 - (void)OnOpenList
 {
 //%orig;   //拆包之后不跳转到红包详情
-NSLog(@"---------%@:", NSStringFromSelector(_cmd));
+//NSLog(@"---------%@:", NSStringFromSelector(_cmd));
 }
 
 %end
@@ -76,7 +76,7 @@ NSLog(@"---------%@:", NSStringFromSelector(_cmd));
 {
 BOOL value = %orig;
 
-NSLog(@"---------%@:--%@--class:%@   判断是不是红包 Bool->%d", NSStringFromSelector(_cmd), arg1, [arg1 class], value);
+//NSLog(@"---------%@:--%@--class:%@   判断是不是红包 Bool->%d", NSStringFromSelector(_cmd), arg1, [arg1 class], value);
 
 return value;
 }
@@ -95,7 +95,7 @@ return value;
 {
 %orig;
 
-NSLog(@"----2-----%@:--%@--%@--%@", NSStringFromSelector(_cmd), arg1,     self.nextResponder.nextResponder.nextResponder.nextResponder.nextResponder.nextResponder, [arg1 class]);
+//NSLog(@"----2-----%@:--%@--%@--%@", NSStringFromSelector(_cmd), arg1,     self.nextResponder.nextResponder.nextResponder.nextResponder.nextResponder.nextResponder, [arg1 class]);
 
 
 id vc = self.nextResponder.nextResponder.nextResponder.nextResponder.nextResponder.nextResponder;
@@ -107,10 +107,10 @@ NSString *m_uiMesLocalID = [info valueForKey:@"m_uiMesLocalID"];
 if (![arrayRecordRedEnvelopes containsObject:m_uiMesLocalID] && [vc autoGrabRedEnvelopes]) {
 [arrayRecordRedEnvelopes addObject:m_uiMesLocalID];
 [self onClick];
-NSLog(@"%@  新红包出来, 自动打开抢了", NSStringFromSelector(_cmd));
+//NSLog(@"%@  新红包出来, 自动打开抢了", NSStringFromSelector(_cmd));
 }
 
-NSLog(@"---%@  arrayRecordRedEnvelopes-> %@", NSStringFromSelector(_cmd), arrayRecordRedEnvelopes);
+//NSLog(@"---%@  arrayRecordRedEnvelopes-> %@", NSStringFromSelector(_cmd), arrayRecordRedEnvelopes);
 }
 
 %end
@@ -145,7 +145,7 @@ objc_setAssociatedObject(self, &Key, arrayRecordRedEnvelopes, OBJC_ASSOCIATION_R
 NSNumber *autoGrabRedEnvelopesValue = [[NSUserDefaults standardUserDefaults] objectForKey:@"auto_grap_red_envelope"] ?: @(YES);  //有值就根据值来判断, 没值就默认开抢
 objc_setAssociatedObject(self, &SwitchKey, autoGrabRedEnvelopesValue, OBJC_ASSOCIATION_COPY_NONATOMIC);
 
-NSLog(@"%d", [self autoGrabRedEnvelopes]);
+//NSLog(@"%d", [self autoGrabRedEnvelopes]);
 }
 
 
@@ -174,7 +174,7 @@ UISwitch *loudModeSwitch = arg1;
 [[NSUserDefaults standardUserDefaults] setObject:@(loudModeSwitch.isOn) forKey:@"auto_grap_red_envelope"];
 [[NSUserDefaults standardUserDefaults] synchronize];
 
-NSLog(@"听筒模式事件 %@  Bool->%d", NSStringFromSelector(_cmd), loudModeSwitch.isOn);
+//NSLog(@"听筒模式事件 %@  Bool->%d", NSStringFromSelector(_cmd), loudModeSwitch.isOn);
 }
 
 %end
