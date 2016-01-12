@@ -1,0 +1,9 @@
+{
+	Filter = {
+		Bundles = (
+			"com.youku.YouKu",
+			"com.youku.hd",
+			"com.qiyi.iphone",
+		);
+	};
+}
