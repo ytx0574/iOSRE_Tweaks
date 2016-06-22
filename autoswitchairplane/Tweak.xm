@@ -38,7 +38,7 @@ return awesome;
 #import "autoswitchairplane.h"
 #import <objc/message.h>
 
-
+//只能自动开启飞行模式, 无法自动关闭.  当开启飞行模式时, dylib都被禁用了, 我是这么理解的 - -
 %hook SpringBoard
 
 - (void)applicationDidFinishLaunching:(id)application
