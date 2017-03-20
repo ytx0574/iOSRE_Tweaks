@@ -1,0 +1,9 @@
+Package: com.johnson.qqlive
+Name: Tweak_QQLive
+Depends: mobilesubstrate
+Version: 0.0.1
+Architecture: iphoneos-arm
+Description: An awesome MobileSubstrate tweak!
+Maintainer: Johnson
+Author: Johnson
+Section: Tweaks
