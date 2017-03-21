@@ -3,11 +3,12 @@ ARCHS = armv7 arm64
 TARGET = iphone:latest:7.0
 
 
+
 include theos/makefiles/common.mk
 
-TWEAK_NAME = Tweak_QQLive
-Tweak_QQLive_FILES = Tweak.xm
-tweak_qqlive_FRAMEWORKS = UIKit Foundation
+TWEAK_NAME = johnson_qqlive
+johnson_qqlive_FILES = Tweak.xm
+johnson_qqlive_FRAMEWORKS = UIKit Foundation
 
 include $(THEOS_MAKE_PATH)/tweak.mk
 

@@ -1,8 +1,0 @@
-{
-	Filter = {
-		Bundles = (
-			"com.tencent.QQLiveHD",
-			"com.tencent.live4iphone",
-		);
-	};
-}
