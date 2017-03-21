@@ -32,21 +32,17 @@ the generation of a class list and an automatic constructor.
 // Always make sure you clean up after yourself; Not doing so could have grave consequences!
 %end
 */
+\
 
-#import "shieldingad.h"
+#import "letvipadclient.h"
 
+%hook LTPlayerDisplayView
 
-//优酷-----------------------------------------------------------------
-
-%hook YTEngineAdPlayer
-
-- (void)playWithScheme:(unsigned long long)arg1 playerItem:(id)arg2 preAdItems:(id)arg3 quality:(long long)arg4 language:(_Bool)arg5 localPlay:(_Bool)arg6
+- (void)setPlayer:(AVPlayer *)player
 {
-arg3 = nil; //仅仅这么一句就够了 哈哈哈
 %orig;
+
+[player pause];
 }
 
 %end
-
-
-

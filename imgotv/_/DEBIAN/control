@@ -1,0 +1,10 @@
+Package: com.johnson.ImgoTV
+Name: ImgoTV
+Depends: mobilesubstrate
+Architecture: iphoneos-arm
+Description: An awesome MobileSubstrate tweak!
+Maintainer: Johnson
+Author: Johnson
+Section: Tweaks
+Version: 0.0.1-5
+Installed-Size: 136

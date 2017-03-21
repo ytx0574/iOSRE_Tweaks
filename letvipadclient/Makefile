@@ -6,10 +6,11 @@ TARGET = iphone:latest:8.0
 
 include theos/makefiles/common.mk
 
-TWEAK_NAME = shieldingad
-shieldingad_FILES = Tweak.xm
+TWEAK_NAME = LetvIpadClient
+LetvIpadClient_FILES = Tweak.xm
+LetvIpadClient_FRAMEWORKS = UIKit Foundation AVFoundation
 
 include $(THEOS_MAKE_PATH)/tweak.mk
 
 after-install::
-	install.exec "killall -9 YoukuiPhone YouKuHD iQiYiPhoneVideo"
+	install.exec "killall -9 LetvIpadClient"
