@@ -5,11 +5,50 @@
 //
 
 #import <AVFoundation/AVFoundation.h>
+#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
+#import <CoreMedia/CoreMedia.h>
 
 @interface LTPlayerDisplayView : UIView
 
 @property(retain, nonatomic) AVPlayer *player;
 
-- (id)initWithFrame:(struct CGRect)arg1;
+@end
+
+
+
+@interface LTPlayControlView : UIView
 
 @end
+
+
+@interface LTPlayControlFSAdBottomView : UIView
+
+@end
+
+
+@interface LTPlayControlFSAdTopView : UIView
+
+@end
+
+
+
+
+
+
+@interface LTMoviePlayerViewController : UIViewController
+
+
+@property(nonatomic) double lastRecordSecond;
+- (double)adCurrentTime;
+
+@property(retain, nonatomic) LTPlayControlView *viewPlayControl; // @synthesize viewPlayControl=_viewPlayControl;
+
+
+@property(retain, nonatomic) LTPlayControlFSAdBottomView *viewAdBottomPlayControl; // @synthesize viewAdBottomPlayControl=_viewAdBottomPlayControl;
+@property(retain, nonatomic) LTPlayControlFSAdTopView *viewAdTopPlayControl; // @synthesize viewAdTopPlayControl=_viewAdTopPlayControl;
+
+@end
+
+
+

@@ -8,7 +8,7 @@ include theos/makefiles/common.mk
 
 TWEAK_NAME = LetvIpadClient
 LetvIpadClient_FILES = Tweak.xm
-LetvIpadClient_FRAMEWORKS = UIKit Foundation AVFoundation
+LetvIpadClient_FRAMEWORKS = UIKit Foundation AVFoundation CoreMedia
 
 include $(THEOS_MAKE_PATH)/tweak.mk
 
