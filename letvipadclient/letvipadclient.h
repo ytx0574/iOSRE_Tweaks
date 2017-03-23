@@ -8,6 +8,7 @@
 #import <UIKit/UIKit.h>
 #import <Foundation/Foundation.h>
 #import <CoreMedia/CoreMedia.h>
+#import <objc/NSObject.h>
 
 @interface LTPlayerDisplayView : UIView
 
@@ -31,16 +32,35 @@
 
 @end
 
+@interface APSBaseViewForPlayer : UIView
+    - (void)adComplete;
+    - (void)removeself;
+    - (void)invalidateCountdownTimer;
+    
+@end
 
 
+@interface LTMidProAdvertiseData : NSObject
+
+@property(nonatomic, getter=isPreparing) _Bool preparing; // @synthesize preparing=_preparing;
+@property(nonatomic, getter=isPlayed) _Bool played; // @synthesize played=_played;
+@property(retain, nonatomic) NSMutableArray *indexArray; // @synthesize indexArray=_indexArray;
+@property(nonatomic) double duration; // @synthesize duration=_duration;
+@property(nonatomic) double startTime; // @synthesize startTime=_startTime;
+
+@end
 
 
 
 @interface LTMoviePlayerViewController : UIViewController
 
+@property (nonatomic, strong) NSTimer *customTimer;
 
 @property(nonatomic) double lastRecordSecond;
+
 - (double)adCurrentTime;
+
+@property(retain, nonatomic) NSMutableArray *midProAdDataArray;
 
 @property(retain, nonatomic) LTPlayControlView *viewPlayControl; // @synthesize viewPlayControl=_viewPlayControl;
 
