@@ -1,0 +1,10 @@
+Package: com.johnson.lagou
+Name: lagou
+Depends: mobilesubstrate
+Architecture: iphoneos-arm
+Description: An awesome MobileSubstrate tweak!
+Maintainer: Johnson
+Author: Johnson
+Section: Tweaks
+Version: 0.0.1-14
+Installed-Size: 136
