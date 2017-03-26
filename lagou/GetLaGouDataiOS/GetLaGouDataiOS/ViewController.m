@@ -276,8 +276,12 @@
         if (JSONResultArray.count > 0) {
             NSLog(@"------o-------拉钩：  输出与上次不一样的数据%@", JSONResultArray);
             
-            NSString *msg = [JSONResultArray componentsJoinedByString:@"\n\n\n"];
-            [GetChatVC conductViewSendMessageWithText:msg];
+            [JSONResultArray enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                
+                [GetChatVC conductViewSendMessageWithText:[NSString stringWithCString:[[obj description] cStringUsingEncoding:NSUTF8StringEncoding] encoding:NSNonLossyASCIIStringEncoding]];
+                
+            }];
+            
         }else {
             NSLog(@"------o-------拉钩：  此次无新招聘发布¸¸¸¸¸¸¸¸¸¸¸¸¸¸¸¸¸¸¸¸¸¸¸¸¸¸¸¸¸¸");
         }
