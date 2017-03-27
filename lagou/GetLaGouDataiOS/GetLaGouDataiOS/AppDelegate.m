@@ -35,7 +35,7 @@
     
     
 //    self.window.rootViewController = [TestVC new];
-    self.window.rootViewController = [LGJobListHomeViewController new];
+//    self.window.rootViewController = [LGJobListHomeViewController new];
     return YES;
 }
 

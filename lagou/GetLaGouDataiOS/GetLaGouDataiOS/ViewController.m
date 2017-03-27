@@ -124,9 +124,25 @@
     
     
     
+    NSLog(@"%@", [NSDate dateWithTimeIntervalSinceNow:60 * 60 * 8]);
+    
+    
+    NSDateFormatter *dateFormater = [[NSDateFormatter alloc] init];
+    [dateFormater setDateFormat:@"yyyy-MM-dd"];
+    NSString *currentDateString = [dateFormater stringFromDate:[NSDate dateWithTimeIntervalSinceNow:60 * 60 * 8]];
     
     
     
+    
+    
+    
+    
+    NSString *dateString = @"2017-03-27 11:35:32.0";
+    
+   
+    if ([dateString hasPrefix:currentDateString]) {
+        NSLog(@"______");
+    }
     
     
     
@@ -238,7 +254,7 @@
             [dictInfo removeObjectForKey:@"strategyArray"];
             [JSONResultArray addObject:dictInfo];
             
-            NSLog(@"===%@ %@ mj_JSONObject:%@ \n dict:%@", [obj class], obj, [obj mj_JSONObject], dictInfo);
+            NSLog(@"===单条数据  %@ %@ mj_JSONObject:%@ \n dict:%@", [obj class], obj, [obj mj_JSONObject], dictInfo);
 
         }];
         
@@ -278,7 +294,14 @@
             
             [JSONResultArray enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
                 
-                [GetChatVC conductViewSendMessageWithText:[NSString stringWithCString:[[obj description] cStringUsingEncoding:NSUTF8StringEncoding] encoding:NSNonLossyASCIIStringEncoding]];
+                NSDateFormatter *dateFormater = [[NSDateFormatter alloc] init];
+                [dateFormater setDateFormat:@"yyyy-MM-dd"];
+                NSString *currentDateString = [dateFormater stringFromDate:[NSDate dateWithTimeIntervalSinceNow:60 * 60 * 8]];
+
+                //只发送首发招聘 (筛选出的数据有很多不是当日发布)
+                if ([obj[@"createTime"] hasPrefix:currentDateString]) {
+                    [GetChatVC conductViewSendMessageWithText:[NSString stringWithCString:[[obj description] cStringUsingEncoding:NSUTF8StringEncoding] encoding:NSNonLossyASCIIStringEncoding]];
+                }
                 
             }];
             

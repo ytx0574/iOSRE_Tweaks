@@ -231,7 +231,7 @@ NSMutableDictionary *dictInfo = [[obj mj_JSONObject] mutableCopy];
 [dictInfo removeObjectForKey:@"strategyArray"];
 [JSONResultArray addObject:dictInfo];
 
-NSLog(@"===%@ %@ mj_JSONObject:%@ \n dict:%@", [obj class], obj, [obj mj_JSONObject], dictInfo);
+NSLog(@"===单条数据  %@ %@ mj_JSONObject:%@ \n dict:%@", [obj class], obj, [obj mj_JSONObject], dictInfo);
 
 }];
 
@@ -271,7 +271,14 @@ NSLog(@"------o-------拉钩：  输出与上次不一样的数据%@", JSONResul
 
 [JSONResultArray enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
 
+NSDateFormatter *dateFormater = [[NSDateFormatter alloc] init];
+[dateFormater setDateFormat:@"yyyy-MM-dd"];
+NSString *currentDateString = [dateFormater stringFromDate:[NSDate dateWithTimeIntervalSinceNow:60 * 60 * 8]];
+
+//只发送首发招聘 (筛选出的数据有很多不是当日发布)
+if ([obj[@"createTime"] hasPrefix:currentDateString]) {
 [GetChatVC conductViewSendMessageWithText:[NSString stringWithCString:[[obj description] cStringUsingEncoding:NSUTF8StringEncoding] encoding:NSNonLossyASCIIStringEncoding]];
+}
 
 }];
 
