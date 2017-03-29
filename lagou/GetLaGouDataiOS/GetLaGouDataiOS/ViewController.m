@@ -204,8 +204,23 @@
         SetLoadMoreTimer(nil);
         
         
-        __block NSMutableArray *lastResultArray = [NSKeyedUnarchiver unarchiveObjectWithFile:LgJobListPath];
-    
+        
+        //内部对象对NSNumber
+        NSMutableArray *arrayLocalRecord = [NSKeyedUnarchiver unarchiveObjectWithFile:LgJobListPath];
+        
+        //如果内部对象不是NSNumer 则移除本地保存内容
+        if (![arrayLocalRecord.firstObject isKindOfClass:[NSNumber class]]  && arrayLocalRecord) {
+            
+            [[NSFileManager defaultManager] removeItemAtPath:LgJobListPath error:nil];
+            [arrayLocalRecord removeAllObjects];
+        }
+        
+        //如果本地没有记录， 则初始化
+        if (arrayLocalRecord == nil) {
+            arrayLocalRecord = [NSMutableArray array];
+        }
+        
+        
         
         //模拟数据
         __unsafe_unretained typeof(self) wself = self;  //
@@ -234,15 +249,19 @@
             LGJobListItemModel *dd = [[NSClassFromString(@"LGJobListItemModel") alloc] init];
             dd.companyId = 44;
 
-            
-            lastResultArray = [@[a.mj_JSONObject, b.mj_JSONObject, c.mj_JSONObject] mutableCopy];
+           
+            [arrayLocalRecord removeAllObjects];
+            [arrayLocalRecord addObjectsFromArray:@[@(a.companyId), @(b.companyId), @(c.companyId)]];
             
             [[wself resultArray] removeAllObjects];
-            [[wself resultArray] addObjectsFromArray:@[aa.mj_JSONObject, bb.mj_JSONObject, cc.mj_JSONObject, dd.mj_JSONObject]];
+            [[wself resultArray] addObjectsFromArray:@[aa, bb, cc, dd]];
         };
         
         if (kUseAnalogData) { analogData(); }
-        
+    
+    
+        //标记是否发送最终筛选结果， 本地无记录时不发送
+        BOOL isSendMsg = arrayLocalRecord.count == 0 ? NO : YES;
         
         
         
@@ -258,50 +277,50 @@
 
         }];
         
-        
-        [NSKeyedArchiver archiveRootObject:[JSONResultArray mj_JSONObject] toFile:LgJobListPath];
-//        NSLog(@"------o-------拉钩：  打印当前总数据  %@", JSONResultArray);
-        
-        
-        //第一次本地没有取到数据，不做筛选。
-        if (lastResultArray == nil) {
-            return;
-        }
-        
-        
-        //筛选出新旧数据一样的部分
-        NSMutableArray *sameDataArray = [NSMutableArray array];
+    
+        //取出本地没有记录的数据
+        NSMutableArray *arrayNotInLocalData = [NSMutableArray array];
         
         [JSONResultArray enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
             
-            LGJobListItemModel *lgJobListItemModel = [[lastResultArray filteredArrayUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(id  _Nullable evaluatedObject, NSDictionary<NSString *,id> * _Nullable bindings) {
-                return [evaluatedObject[@"companyId"] integerValue] == [obj[@"companyId"] integerValue];
+            NSNumber *companyId = [[arrayLocalRecord filteredArrayUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(id  _Nullable evaluatedObject, NSDictionary<NSString *,id> * _Nullable bindings) {
+                return [evaluatedObject integerValue] == [obj[@"companyId"] integerValue];
             }]] firstObject];
             
-            if (lgJobListItemModel) {
-                [sameDataArray addObject:obj];
+            //如果本地没有, 则取出没有的数据，并添加本地记录
+            if (companyId == nil) {
+                [arrayLocalRecord addObject:obj[@"companyId"]];
+                [arrayNotInLocalData addObject:obj];
             }
             
         }];
         
-        //从现有数据中移除一样的部分得到最新的内容
-        [JSONResultArray removeObjectsInArray:sameDataArray];
         
         
         
-        if (JSONResultArray.count > 0) {
-            NSLog(@"------o-------拉钩：  输出与上次不一样的数据%@", JSONResultArray);
+        
+        //把本地没有的数据发送到企业端，并把companyId保存到本地进行记录
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
+            [NSKeyedArchiver archiveRootObject:arrayLocalRecord toFile:LgJobListPath];
+        });
+        
+        if (arrayNotInLocalData.count > 0) {
+            NSLog(@"------o-------拉钩：  输出与上次不一样的数据%@", arrayNotInLocalData);
             
-            [JSONResultArray enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            [arrayNotInLocalData enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
                 
-                NSDateFormatter *dateFormater = [[NSDateFormatter alloc] init];
-                [dateFormater setDateFormat:@"yyyy-MM-dd"];
-                NSString *currentDateString = [dateFormater stringFromDate:[NSDate dateWithTimeIntervalSinceNow:60 * 60 * 8]];
-
-                //只发送首发招聘 (筛选出的数据有很多不是当日发布)
-                if ([obj[@"createTime"] hasPrefix:currentDateString]) {
+//                NSDateFormatter *dateFormater = [[NSDateFormatter alloc] init];
+//                [dateFormater setDateFormat:@"yyyy-MM-dd"];
+//                NSString *currentDateString = [dateFormater stringFromDate:[NSDate dateWithTimeIntervalSinceNow:60 * 60 * 8]];
+//
+//                //只发送首发招聘 (筛选出的数据有很多不是当日发布)
+//                if ([obj[@"createTime"] hasPrefix:currentDateString]) {
+                
+                if (isSendMsg) {
                     [GetChatVC conductViewSendMessageWithText:[NSString stringWithCString:[[obj description] cStringUsingEncoding:NSUTF8StringEncoding] encoding:NSNonLossyASCIIStringEncoding]];
                 }
+                
+//                }
                 
             }];
             

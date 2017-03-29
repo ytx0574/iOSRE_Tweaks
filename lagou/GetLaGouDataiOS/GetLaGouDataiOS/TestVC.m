@@ -33,8 +33,9 @@
     NSLog(@"获取到新数据  自动发送消息");
 }
 
-+ (id)initializeWithSession:(id)arg1;
++ (id)initializeWithSession:(LGChatSession *)arg1;
 {
+    [[[UIAlertView alloc] initWithTitle:nil message:[NSString stringWithFormat:@"当前聊天对象已更改为：%@",[arg1 title]] delegate:nil cancelButtonTitle:@"ok" otherButtonTitles:nil, nil] show];
     return [[self alloc] init];
 }
 
