@@ -8,12 +8,17 @@
 
 #define lgConfigData                             [NSDictionary dictionaryWithContentsOfFile:LgConfigPath]
 
-
+//保存每一次会话的session，用于发送指定企业用户
 #define LgSessionPath                            [NSHomeDirectory() stringByAppendingString:@"/Documents/lgSession"]
 
+//保存每一次刷新校验的数据， 用于下次对新数据进行比对
 #define LgJobListPath                            [NSHomeDirectory() stringByAppendingString:@"/Documents/lgJobList"]
 
+//本地配置刷新频率 刷新页数 刷新间隔
 #define LgConfigPath                             [NSHomeDirectory() stringByAppendingString:@"/Documents/lgConfig.plist"]
+
+//本地配置每次更新校验的字段
+#define LgCheckProperties                        [NSHomeDirectory() stringByAppendingString:@"/Documents/lgCheckProperties.plist"]
 
 
 #define SCREEN_WIDTH                             [[UIScreen mainScreen] bounds].size.width

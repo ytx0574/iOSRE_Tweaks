@@ -149,7 +149,7 @@ SetChatVC(chatVC);
 
 
 if (kUpdatePageInterval * kUpdatePage > kUpdateInterval ) {
-[[[UIAlertView alloc] initWithTitle:nil message:@"分页时间太长。。。不对称" delegate:nil cancelButtonTitle:@"ok" otherButtonTitles:nil, nil] show];
+[[[UIAlertView alloc] initWithTitle:nil message:@"分页时间太长。。。分页时间总和与每次刷新间隔时间 不对称" delegate:nil cancelButtonTitle:@"ok" otherButtonTitles:nil, nil] show];
 }
 
 SetUpdateAllDataTimer([NSTimer scheduledTimerWithTimeInterval:kUpdateInterval target:self selector:@selector(searchJobList) userInfo:nil repeats:YES]);
@@ -183,11 +183,13 @@ SetLoadMoreTimer(nil);
 
 
 
-//内部对象对NSNumber
+//内部对象为NSDictionary
 NSMutableArray *arrayLocalRecord = [NSKeyedUnarchiver unarchiveObjectWithFile:LgJobListPath];
+//从本地取出需要校验的字段
+NSDictionary *dictCheckProperties = [NSDictionary dictionaryWithContentsOfFile:LgCheckProperties];
 
-//如果内部对象不是NSNumer 则移除本地保存内容
-if (![arrayLocalRecord.firstObject isKindOfClass:[NSNumber class]]  && arrayLocalRecord) {
+//如果内部对象不是NSDictionary 则移除本地保存内容
+if (![arrayLocalRecord.firstObject isKindOfClass:[NSDictionary class]]  && arrayLocalRecord) {
 
 [[NSFileManager defaultManager] removeItemAtPath:LgJobListPath error:nil];
 [arrayLocalRecord removeAllObjects];
@@ -196,6 +198,11 @@ if (![arrayLocalRecord.firstObject isKindOfClass:[NSNumber class]]  && arrayLoca
 //如果本地没有记录， 则初始化
 if (arrayLocalRecord == nil) {
 arrayLocalRecord = [NSMutableArray array];
+}
+
+//如果本地记录超过300, 则移除一半的数据
+if (arrayLocalRecord.count > 300) {
+[arrayLocalRecord removeObjectsAtIndexes:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, arrayLocalRecord.count / 2)]];
 }
 
 
@@ -229,13 +236,43 @@ dd.companyId = 44;
 
 
 [arrayLocalRecord removeAllObjects];
-[arrayLocalRecord addObjectsFromArray:@[@(a.companyId), @(b.companyId), @(c.companyId)]];
+
+//添加三个模拟数据
+[@[a, b, c] enumerateObjectsUsingBlock:^(LGJobListItemModel *model, NSUInteger idx, BOOL * _Nonnull stop) {
+
+NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+
+[[dictCheckProperties allKeys] enumerateObjectsUsingBlock:^(NSString *property, NSUInteger idx, BOOL * _Nonnull stop) {
+
+//只添加本地需要校验的字段
+if ([dictCheckProperties[property] boolValue]) {
+
+[dict setObject:[model valueForKey:property] ?: @"" forKey:property];
+
+}
+
+}];
+
+[arrayLocalRecord addObject:dict];
+
+}];
+
+
+[arrayLocalRecord addObjectsFromArray:@[
+@{@"companyId": @(a.companyId), @"salary": @""},
+@{@"companyId": @(b.companyId), @"salary": @""},
+@{@"companyId": @(c.companyId), @"salary": @""},
+]];
+
 
 [[wself resultArray] removeAllObjects];
 [[wself resultArray] addObjectsFromArray:@[aa, bb, cc, dd]];
 };
 
-if (kUseAnalogData) { analogData(); }
+if (kUseAnalogData) { analogData(); }  //这个模拟数据感觉有点多余了，先留着吧
+
+
+
 
 
 //标记是否发送最终筛选结果， 本地无记录时不发送
@@ -256,18 +293,57 @@ NSLog(@"===单条数据  %@ %@ mj_JSONObject:%@ \n dict:%@", [obj class], obj, [
 }];
 
 
-//取出本地没有记录的数据
+//记录上一次记录没有的数据， 用于发送到企业端
 NSMutableArray *arrayNotInLocalData = [NSMutableArray array];
 
 [JSONResultArray enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
 
-NSNumber *companyId = [[arrayLocalRecord filteredArrayUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(id  _Nullable evaluatedObject, NSDictionary<NSString *,id> * _Nullable bindings) {
-return [evaluatedObject integerValue] == [obj[@"companyId"] integerValue];
+
+//筛选当然对象上一次本地记录是否存在
+NSDictionary *dictJobListItem = [[arrayLocalRecord filteredArrayUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(NSDictionary *evaluatedObject, NSDictionary<NSString *,id> * _Nullable bindings) {
+
+//默认为相同， 一旦出现某个字段值不相等时， 返回NO
+__block BOOL result = YES;
+
+//从本地配置对比的字段  来筛选本地数据和线上数据的相同部分
+[[dictCheckProperties allKeys] enumerateObjectsUsingBlock:^(NSString *key, NSUInteger idx, BOOL * _Nonnull stop) {
+
+//只验证本地配置表设置为需要验证的字段
+if ([dictCheckProperties[key] boolValue]) {
+
+//现有数据是否在本地存在（只验证配置表需要验证的字段）
+BOOL flag = [obj[key] isEqual:evaluatedObject[key]];
+if (flag == NO) {
+result = NO;
+*stop = YES;
+}
+
+}
+
+}];
+
+return result;
 }]] firstObject];
 
+
 //如果本地没有, 则取出没有的数据，并添加本地记录
-if (companyId == nil) {
-[arrayLocalRecord addObject:obj[@"companyId"]];
+if (dictJobListItem == nil) {
+
+NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+
+[[dictCheckProperties allKeys] enumerateObjectsUsingBlock:^(NSString *property, NSUInteger idx, BOOL * _Nonnull stop) {
+
+//只添加本地需要校验的字段
+if ([dictCheckProperties[property] boolValue]) {
+
+[dict setObject:obj[property] ?: @"" forKey:property];
+
+}
+
+}];
+
+[arrayLocalRecord addObject:dict];
+
 [arrayNotInLocalData addObject:obj];
 }
 
@@ -283,22 +359,13 @@ dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0),
 });
 
 if (arrayNotInLocalData.count > 0) {
-NSLog(@"------o-------拉钩：  输出与上次不一样的数据%@", arrayNotInLocalData);
+NSLog(@"------o-------拉钩：  输出与上次不一样的数据%@ %@", @(arrayNotInLocalData.count), arrayNotInLocalData);
 
 [arrayNotInLocalData enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-
-//                NSDateFormatter *dateFormater = [[NSDateFormatter alloc] init];
-//                [dateFormater setDateFormat:@"yyyy-MM-dd"];
-//                NSString *currentDateString = [dateFormater stringFromDate:[NSDate dateWithTimeIntervalSinceNow:60 * 60 * 8]];
-//
-//                //只发送首发招聘 (筛选出的数据有很多不是当日发布)
-//                if ([obj[@"createTime"] hasPrefix:currentDateString]) {
 
 if (isSendMsg) {
 [GetChatVC conductViewSendMessageWithText:[NSString stringWithCString:[[obj description] cStringUsingEncoding:NSUTF8StringEncoding] encoding:NSNonLossyASCIIStringEncoding]];
 }
-
-//                }
 
 }];
 
@@ -340,6 +407,40 @@ if (![[NSFileManager defaultManager] fileExistsAtPath:LgConfigPath]) {
 } writeToFile:LgConfigPath atomically:YES];
 
 }
+
+
+//添加数据校验字段， 默认必须验证companyId， 其他的在/Documents/lgCheckProperties.plist中修改
+NSLog(@"------o-------拉钩：  本地校验字段修改位置 %@", LgCheckProperties);
+if (![[NSFileManager defaultManager] fileExistsAtPath:LgCheckProperties]) {
+
+//获取LGJobListItemModel对象的所有字段
+u_int count;
+objc_property_t *properties = class_copyPropertyList(NSClassFromString(@"LGJobListItemModel"), &count);
+NSMutableArray *arrayProperties = [[NSMutableArray alloc] initWithCapacity:count];
+for (int i = 0; i < count ; i++)
+{
+const char* propertyName = property_getName(properties[i]);
+[arrayProperties addObject: [NSString stringWithUTF8String: propertyName]];
+}
+free(properties);
+
+
+
+NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+[arrayProperties enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+
+//默认必须验证companyId 其他的在/Documents/lgCheckProperties.plist修改
+[dict setObject:[obj isEqualToString:@"companyId"] ? @(YES) : @(NO) forKey:obj];
+
+}];
+//移除自带bug的key。 它是一个数组，无有用数据
+[dict removeObjectForKey:@"strategyArray"];
+
+[dict writeToFile:LgCheckProperties atomically:YES];
+
+}
+
+
 
 UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
 button.frame = CGRectMake([[UIScreen mainScreen] bounds].size.width - 30, SCREEN_HEIGHT - 50 - 30, 30, 30);
@@ -413,7 +514,15 @@ dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * NSEC_PER_SEC)), di
 });
 
 }else {
-NSLog(@"------o-------拉钩：  对话消息不存在，请先选择一对话人");
+
+UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:nil message:@"对话消息不存在，请先选择一个需要发送最新招聘的企业用户" delegate:nil cancelButtonTitle:@"ok" otherButtonTitles:nil, nil];
+
+[alertView show];
+
+dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+[alertView dismissWithClickedButtonIndex:0 animated:YES];
+});
+
 }
 
 }

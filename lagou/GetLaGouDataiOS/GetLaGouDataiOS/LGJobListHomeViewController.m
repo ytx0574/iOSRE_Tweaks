@@ -12,6 +12,7 @@
 #import "Header.h"
 #import <objc/runtime.h>
 #import "NSObject+MJKeyValue.h"
+#import "ViewController.h"
 
 @interface LGJobListHomeViewController ()
 
@@ -41,13 +42,47 @@
         
         [@{
           @"kKeyword" : @"iOS",
-          @"kUseAnalogData" : @(YES),
+          @"kUseAnalogData" : @(NO),
           @"kUpdateInterval" : @(25),
           @"kUpdatePage" : @(10),
           @"kUpdatePageInterval" : @(2),
           } writeToFile:LgConfigPath atomically:YES];
     
     }
+    
+    
+    //添加数据校验字段， 默认必须验证companyId， 其他的在/Documents/lgCheckProperties.plist中修改
+    NSLog(@"------o-------拉钩：  本地校验字段修改位置 %@", LgCheckProperties);
+    if (![[NSFileManager defaultManager] fileExistsAtPath:LgCheckProperties]) {
+    
+        //获取LGJobListItemModel对象的所有字段
+        u_int count;
+        objc_property_t *properties = class_copyPropertyList(NSClassFromString(@"LGJobListItemModel"), &count);
+        NSMutableArray *arrayProperties = [[NSMutableArray alloc] initWithCapacity:count];
+        for (int i = 0; i < count ; i++)
+        {
+            const char* propertyName = property_getName(properties[i]);
+            [arrayProperties addObject: [NSString stringWithUTF8String: propertyName]];
+        }
+        free(properties);
+        
+        
+        
+        NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+        [arrayProperties enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            
+            //默认必须验证companyId 其他的在/Documents/lgCheckProperties.plist修改
+            [dict setObject:[obj isEqualToString:@"companyId"] ? @(YES) : @(NO) forKey:obj];
+            
+        }];
+        //移除自带bug的key。 它是一个数组，无有用数据
+        [dict removeObjectForKey:@"strategyArray"];
+
+        [dict writeToFile:LgCheckProperties atomically:YES];
+        
+    }
+    
+    
 
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
     button.frame = CGRectMake([[UIScreen mainScreen] bounds].size.width - 30, SCREEN_HEIGHT - 50 - 30, 30, 30);
@@ -130,7 +165,15 @@
         });
         
     }else {
-        NSLog(@"------o-------拉钩：  对话消息不存在，请先选择一对话人");
+        
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:nil message:@"对话消息不存在，请先选择一个需要发送最新招聘的企业用户" delegate:nil cancelButtonTitle:@"ok" otherButtonTitles:nil, nil];
+        
+        [alertView show];
+
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [alertView dismissWithClickedButtonIndex:0 animated:YES];
+        });
+
     }
     
 }

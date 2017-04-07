@@ -11,47 +11,94 @@
 #import "Header.h"
 #import "TestVC.h"
 
-@interface LGJobListItemModel : NSObject
-    @property(copy, nonatomic) NSString *showId; // @synthesize showId=_showId;
-    @property(retain, nonatomic) NSArray *strategyArray; // @synthesize strategyArray=_strategyArray;
-    @property(nonatomic) float cellHeight; // @synthesize cellHeight=_cellHeight;
-    @property(nonatomic) int index; // @synthesize index=_index;
-    @property(copy, nonatomic) NSString *closeIcon; // @synthesize closeIcon=_closeIcon;
-    @property(copy, nonatomic) NSString *infoLink; // @synthesize infoLink=_infoLink;
-    @property(copy, nonatomic) NSString *imageUrl; // @synthesize imageUrl=_imageUrl;
-    @property(nonatomic) int adId; // @synthesize adId=_adId;
-    @property(copy, nonatomic) NSString *adCode; // @synthesize adCode=_adCode;
-    @property(copy, nonatomic) NSString *cornerTag; // @synthesize cornerTag=_cornerTag;
-    @property(nonatomic) int type; // @synthesize type=_type;
-    @property(copy, nonatomic) NSString *district; // @synthesize district=_district;
-    @property(copy, nonatomic) NSString *businessZone; // @synthesize businessZone=_businessZone;
-    @property(nonatomic) _Bool talkable; // @synthesize talkable=_talkable;
-    @property(nonatomic) long long updateTime; // @synthesize updateTime=_updateTime;
-    @property(nonatomic) _Bool hasDeliver; // @synthesize hasDeliver=_hasDeliver;
-    @property(retain, nonatomic) NSString *companyFullName; // @synthesize companyFullName=_companyFullName;
-    @property(retain, nonatomic) NSString *positionAdvantage; // @synthesize positionAdvantage=_positionAdvantage;
-    @property(retain, nonatomic) NSString *industryField; // @synthesize industryField=_industryField;
-    @property(retain, nonatomic) NSString *financeStage; // @synthesize financeStage=_financeStage;
-    @property(retain, nonatomic) NSString *education; // @synthesize education=_education;
-    @property(retain, nonatomic) NSString *workYear; // @synthesize workYear=_workYear;
-    @property(retain, nonatomic) NSString *salary; // @synthesize salary=_salary;
-    @property(retain, nonatomic) NSString *createTime; // @synthesize createTime=_createTime;
-    @property(retain, nonatomic) NSString *city; // @synthesize city=_city;
-    @property(retain, nonatomic) NSString *companySize; // @synthesize companySize=_companySize;
-    @property(retain, nonatomic) NSString *companyName; // @synthesize companyName=_companyName;
-    @property(retain, nonatomic) NSString *companyLogo; // @synthesize companyLogo=_companyLogo;
-    @property(retain, nonatomic) NSString *positionName; // @synthesize positionName=_positionName;
-    @property(nonatomic) int companyId; // @synthesize companyId=_companyId;
-    @property(nonatomic) int publisherId; // @synthesize publisherId=_publisherId;
-    @property(nonatomic) int positionId; // @synthesize positionId=_positionId;
-@end
+
+//@implementation NSObject (Runtime)
+//
+//+ (NSArray *)runtimeProperties
+//{
+//    unsigned int outCount;
+//    objc_property_t *properties = class_copyPropertyList([self class], &outCount);
+//    NSMutableArray *result = [NSMutableArray array];
+//    for (int i = 0; i < outCount; i++) {
+//        [result addObject:[self formattedPropery:properties[i]]];
+//    }
+//    free(properties);
+//    return result.count ? [result copy] : nil;
+//}
+//
+//+ (NSString *)formattedPropery:(objc_property_t)prop {
+//    unsigned int attrCount;
+//    objc_property_attribute_t *attrs = property_copyAttributeList(prop, &attrCount);
+//    NSMutableDictionary *attributes = [NSMutableDictionary dictionary];
+//    for (int idx = 0; idx < attrCount; idx++) {
+//        NSString *name = [NSString stringWithCString:attrs[idx].name encoding:NSUTF8StringEncoding];
+//        NSString *value = [NSString stringWithCString:attrs[idx].value encoding:NSUTF8StringEncoding];
+//        [attributes setObject:value forKey:name];
+//    }
+//    free(attrs);
+//    NSMutableString *property = [NSMutableString stringWithFormat:@"@property "];
+//    NSMutableArray *attrsArray = [NSMutableArray array];
+//    
+//    //https://developer.apple.com/library/mac/#documentation/Cocoa/Conceptual/ObjCRuntimeGuide/Articles/ocrtPropertyIntrospection.html#//apple_ref/doc/uid/TP40008048-CH101-SW5
+//    [attrsArray addObject:[attributes objectForKey:@"N"] ? @"nonatomic" : @"atomic"];
+//    
+//    if ([attributes objectForKey:@"&"]) {
+//        [attrsArray addObject:@"strong"];
+//    } else if ([attributes objectForKey:@"C"]) {
+//        [attrsArray addObject:@"copy"];
+//    } else if ([attributes objectForKey:@"W"]) {
+//        [attrsArray addObject:@"weak"];
+//    } else {
+//        [attrsArray addObject:@"assign"];
+//    }
+//    if ([attributes objectForKey:@"R"]) {[attrsArray addObject:@"readonly"];}
+//    if ([attributes objectForKey:@"G"]) {
+//        [attrsArray addObject:[NSString stringWithFormat:@"getter=%@", [attributes objectForKey:@"G"]]];
+//    }
+//    if ([attributes objectForKey:@"S"]) {
+//        [attrsArray addObject:[NSString stringWithFormat:@"setter=%@", [attributes objectForKey:@"G"]]];
+//    }
+//    
+//    [property appendFormat:@"(%@) %@ %@",
+//     [attrsArray componentsJoinedByString:@", "],
+//     [NSString decodeType:[[attributes objectForKey:@"T"] cStringUsingEncoding:NSUTF8StringEncoding]],
+//     [NSString stringWithCString:property_getName(prop) encoding:NSUTF8StringEncoding]];
+//    return [property copy];
+//}
+//
+//@end
+//
+//
+//@implementation NSString (Runtime)
+//
+//+ (NSString *)decodeType:(const char *)cString {
+//    if (!strcmp(cString, @encode(id))) return @"id";
+//    if (!strcmp(cString, @encode(void))) return @"void";
+//    if (!strcmp(cString, @encode(float))) return @"float";
+//    if (!strcmp(cString, @encode(int))) return @"int";
+//    if (!strcmp(cString, @encode(BOOL))) return @"BOOL";
+//    if (!strcmp(cString, @encode(char *))) return @"char *";
+//    if (!strcmp(cString, @encode(double))) return @"double";
+//    if (!strcmp(cString, @encode(Class))) return @"class";
+//    if (!strcmp(cString, @encode(SEL))) return @"SEL";
+//    if (!strcmp(cString, @encode(unsigned int))) return @"unsigned int";
+//    NSString *result = [NSString stringWithCString:cString encoding:NSUTF8StringEncoding];
+//    if ([[result substringToIndex:1] isEqualToString:@"@"] && [result rangeOfString:@"?"].location == NSNotFound) {
+//        result = [[result substringWithRange:NSMakeRange(2, result.length - 3)] stringByAppendingString:@"*"];
+//    } else
+//        if ([[result substringToIndex:1] isEqualToString:@"^"]) {
+//            result = [NSString stringWithFormat:@"%@ *",
+//                      [NSString decodeType:[[result substringFromIndex:1] cStringUsingEncoding:NSUTF8StringEncoding]]];
+//        }
+//    return result;
+//}
+//
+//@end
+
 
 @implementation LGJobListItemModel
 
 @end
-
-
-
 
 
 
@@ -95,6 +142,21 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    
+    
+    
+    
+    
+    
+    NSMutableArray *ay = [NSMutableArray array];
+    for (int i = 0; i < 100; i++) {
+        [ay addObject:@(i)];
+    }
+    
+    [ay removeObjectsAtIndexes:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, ay.count / 2)]];
+    
+    
     
     
     
@@ -164,7 +226,7 @@
     
     
     if (kUpdatePageInterval * kUpdatePage > kUpdateInterval ) {
-        [[[UIAlertView alloc] initWithTitle:nil message:@"分页时间太长。。。不对称" delegate:nil cancelButtonTitle:@"ok" otherButtonTitles:nil, nil] show];
+        [[[UIAlertView alloc] initWithTitle:nil message:@"分页时间太长。。。分页时间总和与每次刷新间隔时间 不对称" delegate:nil cancelButtonTitle:@"ok" otherButtonTitles:nil, nil] show];
     }
     
     SetUpdateAllDataTimer([NSTimer scheduledTimerWithTimeInterval:kUpdateInterval target:self selector:@selector(searchJobList) userInfo:nil repeats:YES]);
@@ -205,11 +267,13 @@
         
         
         
-        //内部对象对NSNumber
+        //内部对象为NSDictionary
         NSMutableArray *arrayLocalRecord = [NSKeyedUnarchiver unarchiveObjectWithFile:LgJobListPath];
+        //从本地取出需要校验的字段
+        NSDictionary *dictCheckProperties = [NSDictionary dictionaryWithContentsOfFile:LgCheckProperties];
         
-        //如果内部对象不是NSNumer 则移除本地保存内容
-        if (![arrayLocalRecord.firstObject isKindOfClass:[NSNumber class]]  && arrayLocalRecord) {
+        //如果内部对象不是NSDictionary 则移除本地保存内容
+        if (![arrayLocalRecord.firstObject isKindOfClass:[NSDictionary class]]  && arrayLocalRecord) {
             
             [[NSFileManager defaultManager] removeItemAtPath:LgJobListPath error:nil];
             [arrayLocalRecord removeAllObjects];
@@ -218,6 +282,11 @@
         //如果本地没有记录， 则初始化
         if (arrayLocalRecord == nil) {
             arrayLocalRecord = [NSMutableArray array];
+        }
+        
+        //如果本地记录超过300, 则移除一半的数据
+        if (arrayLocalRecord.count > 300) {
+            [arrayLocalRecord removeObjectsAtIndexes:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, arrayLocalRecord.count / 2)]];
         }
         
         
@@ -251,13 +320,43 @@
 
            
             [arrayLocalRecord removeAllObjects];
-            [arrayLocalRecord addObjectsFromArray:@[@(a.companyId), @(b.companyId), @(c.companyId)]];
+            
+            //添加三个模拟数据
+            [@[a, b, c] enumerateObjectsUsingBlock:^(LGJobListItemModel *model, NSUInteger idx, BOOL * _Nonnull stop) {
+                
+                NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+                
+                [[dictCheckProperties allKeys] enumerateObjectsUsingBlock:^(NSString *property, NSUInteger idx, BOOL * _Nonnull stop) {
+                    
+                    //只添加本地需要校验的字段
+                    if ([dictCheckProperties[property] boolValue]) {
+                        
+                        [dict setObject:[model valueForKey:property] ?: @"" forKey:property];
+                        
+                    }
+                    
+                }];
+                
+                [arrayLocalRecord addObject:dict];
+                
+            }];
+            
+            
+            [arrayLocalRecord addObjectsFromArray:@[
+                                                    @{@"companyId": @(a.companyId), @"salary": @""},
+                                                    @{@"companyId": @(b.companyId), @"salary": @""},
+                                                    @{@"companyId": @(c.companyId), @"salary": @""},
+                                                    ]];
+            
             
             [[wself resultArray] removeAllObjects];
             [[wself resultArray] addObjectsFromArray:@[aa, bb, cc, dd]];
         };
         
-        if (kUseAnalogData) { analogData(); }
+        if (kUseAnalogData) { analogData(); }  //这个模拟数据感觉有点多余了，先留着吧
+        
+        
+        
     
     
         //标记是否发送最终筛选结果， 本地无记录时不发送
@@ -278,18 +377,57 @@
         }];
         
     
-        //取出本地没有记录的数据
+        //记录上一次记录没有的数据， 用于发送到企业端
         NSMutableArray *arrayNotInLocalData = [NSMutableArray array];
         
         [JSONResultArray enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
             
-            NSNumber *companyId = [[arrayLocalRecord filteredArrayUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(id  _Nullable evaluatedObject, NSDictionary<NSString *,id> * _Nullable bindings) {
-                return [evaluatedObject integerValue] == [obj[@"companyId"] integerValue];
+            
+            //筛选当然对象上一次本地记录是否存在
+            NSDictionary *dictJobListItem = [[arrayLocalRecord filteredArrayUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(NSDictionary *evaluatedObject, NSDictionary<NSString *,id> * _Nullable bindings) {
+                
+                //默认为相同， 一旦出现某个字段值不相等时， 返回NO
+                __block BOOL result = YES;
+                
+                //从本地配置对比的字段  来筛选本地数据和线上数据的相同部分
+                [[dictCheckProperties allKeys] enumerateObjectsUsingBlock:^(NSString *key, NSUInteger idx, BOOL * _Nonnull stop) {
+                    
+                    //只验证本地配置表设置为需要验证的字段
+                    if ([dictCheckProperties[key] boolValue]) {
+                        
+                        //现有数据是否在本地存在（只验证配置表需要验证的字段）
+                        BOOL flag = [obj[key] isEqual:evaluatedObject[key]];
+                        if (flag == NO) {
+                            result = NO;
+                            *stop = YES;
+                        }
+                        
+                    }
+                    
+                }];
+                
+                return result;
             }]] firstObject];
             
+
             //如果本地没有, 则取出没有的数据，并添加本地记录
-            if (companyId == nil) {
-                [arrayLocalRecord addObject:obj[@"companyId"]];
+            if (dictJobListItem == nil) {
+                
+                NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+                
+                [[dictCheckProperties allKeys] enumerateObjectsUsingBlock:^(NSString *property, NSUInteger idx, BOOL * _Nonnull stop) {
+                    
+                    //只添加本地需要校验的字段
+                    if ([dictCheckProperties[property] boolValue]) {
+                        
+                        [dict setObject:obj[property] ?: @"" forKey:property];
+                        
+                    }
+                    
+                }];
+                
+                [arrayLocalRecord addObject:dict];
+                
                 [arrayNotInLocalData addObject:obj];
             }
             
@@ -305,22 +443,13 @@
         });
         
         if (arrayNotInLocalData.count > 0) {
-            NSLog(@"------o-------拉钩：  输出与上次不一样的数据%@", arrayNotInLocalData);
+            NSLog(@"------o-------拉钩：  输出与上次不一样的数据%@ %@", @(arrayNotInLocalData.count), arrayNotInLocalData);
             
             [arrayNotInLocalData enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-                
-//                NSDateFormatter *dateFormater = [[NSDateFormatter alloc] init];
-//                [dateFormater setDateFormat:@"yyyy-MM-dd"];
-//                NSString *currentDateString = [dateFormater stringFromDate:[NSDate dateWithTimeIntervalSinceNow:60 * 60 * 8]];
-//
-//                //只发送首发招聘 (筛选出的数据有很多不是当日发布)
-//                if ([obj[@"createTime"] hasPrefix:currentDateString]) {
                 
                 if (isSendMsg) {
                     [GetChatVC conductViewSendMessageWithText:[NSString stringWithCString:[[obj description] cStringUsingEncoding:NSUTF8StringEncoding] encoding:NSNonLossyASCIIStringEncoding]];
                 }
-                
-//                }
                 
             }];
             
