@@ -437,7 +437,7 @@
         
         
         
-        //把本地没有的数据发送到企业端，并把companyId保存到本地进行记录
+        //把本地没有的数据发送到企业端，并保存本次数据，仅本地配置字段
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
             [NSKeyedArchiver archiveRootObject:arrayLocalRecord toFile:LgJobListPath];
         });

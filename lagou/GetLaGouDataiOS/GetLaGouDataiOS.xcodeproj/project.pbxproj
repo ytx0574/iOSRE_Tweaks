@@ -438,6 +438,11 @@
 				CODE_SIGN_ENTITLEMENTS = GetLaGouDataiOS/GetLaGouDataiOS.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer: chuanlin yang (8AX6FWUK94)";
 				DEVELOPMENT_TEAM = 8U673ZSLP9;
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/GetLaGouDataiOS",
+				);
 				INFOPLIST_FILE = GetLaGouDataiOS/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -459,6 +464,11 @@
 				CODE_SIGN_ENTITLEMENTS = GetLaGouDataiOS/GetLaGouDataiOS.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer: chuanlin yang (8AX6FWUK94)";
 				DEVELOPMENT_TEAM = "";
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/GetLaGouDataiOS",
+				);
 				INFOPLIST_FILE = GetLaGouDataiOS/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
