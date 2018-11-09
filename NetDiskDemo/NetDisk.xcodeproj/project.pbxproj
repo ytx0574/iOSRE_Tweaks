@@ -1,0 +1,363 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 48;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		2CDF4FA92195B920004F2CB8 /* AntiAntiDebug.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CDF4FA82195B920004F2CB8 /* AntiAntiDebug.m */; };
+		2CDF4FAC2195B920004F2CB8 /* fishhook.c in Sources */ = {isa = PBXBuildFile; fileRef = 2CDF4FAB2195B920004F2CB8 /* fishhook.c */; };
+		2CDF4FAE2195B920004F2CB8 /* fishhook.h in Headers */ = {isa = PBXBuildFile; fileRef = 2CDF4FAD2195B920004F2CB8 /* fishhook.h */; };
+		2CDF4FB22195B920004F2CB8 /* NetDisk.h in Headers */ = {isa = PBXBuildFile; fileRef = 2CDF4FB12195B920004F2CB8 /* NetDisk.h */; };
+		2CDF4FB42195B920004F2CB8 /* NetDisk.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CDF4FB32195B920004F2CB8 /* NetDisk.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		2CDF4FA42195B920004F2CB8 /* libNetDisk.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libNetDisk.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
+		2CDF4FA82195B920004F2CB8 /* AntiAntiDebug.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = AntiAntiDebug.m; path = AntiAntiDebug/AntiAntiDebug.m; sourceTree = "<group>"; };
+		2CDF4FAB2195B920004F2CB8 /* fishhook.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = fishhook.c; path = fishhook/fishhook.c; sourceTree = "<group>"; };
+		2CDF4FAD2195B920004F2CB8 /* fishhook.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = fishhook.h; path = fishhook/fishhook.h; sourceTree = "<group>"; };
+		2CDF4FB02195B920004F2CB8 /* put mac app here */ = {isa = PBXFileReference; lastKnownFileType = text; name = "put mac app here"; path = "TargetApp/put mac app here"; sourceTree = "<group>"; };
+		2CDF4FB12195B920004F2CB8 /* NetDisk.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NetDisk.h; sourceTree = "<group>"; };
+		2CDF4FB32195B920004F2CB8 /* NetDisk.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NetDisk.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		2CDF4FA02195B920004F2CB8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		2CDF4F9A2195B920004F2CB8 = {
+			isa = PBXGroup;
+			children = (
+				2CDF4FA62195B920004F2CB8 /* NetDisk */,
+				2CDF4FA52195B920004F2CB8 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		2CDF4FA52195B920004F2CB8 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				2CDF4FA42195B920004F2CB8 /* libNetDisk.dylib */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		2CDF4FA62195B920004F2CB8 /* NetDisk */ = {
+			isa = PBXGroup;
+			children = (
+				2CDF4FB12195B920004F2CB8 /* NetDisk.h */,
+				2CDF4FB32195B920004F2CB8 /* NetDisk.m */,
+				2CDF4FA72195B920004F2CB8 /* AntiAntiDebug */,
+				2CDF4FAA2195B920004F2CB8 /* fishhook */,
+				2CDF4FAF2195B920004F2CB8 /* TargetApp */,
+			);
+			path = NetDisk;
+			sourceTree = "<group>";
+		};
+		2CDF4FA72195B920004F2CB8 /* AntiAntiDebug */ = {
+			isa = PBXGroup;
+			children = (
+				2CDF4FA82195B920004F2CB8 /* AntiAntiDebug.m */,
+			);
+			name = AntiAntiDebug;
+			sourceTree = "<group>";
+		};
+		2CDF4FAA2195B920004F2CB8 /* fishhook */ = {
+			isa = PBXGroup;
+			children = (
+				2CDF4FAB2195B920004F2CB8 /* fishhook.c */,
+				2CDF4FAD2195B920004F2CB8 /* fishhook.h */,
+			);
+			name = fishhook;
+			sourceTree = "<group>";
+		};
+		2CDF4FAF2195B920004F2CB8 /* TargetApp */ = {
+			isa = PBXGroup;
+			children = (
+				2CDF4FB02195B920004F2CB8 /* put mac app here */,
+			);
+			name = TargetApp;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		2CDF4FA12195B920004F2CB8 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2CDF4FAE2195B920004F2CB8 /* fishhook.h in Headers */,
+				2CDF4FB22195B920004F2CB8 /* NetDisk.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		2CDF4FA32195B920004F2CB8 /* NetDisk */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2CDF4FB72195B920004F2CB8 /* Build configuration list for PBXNativeTarget "NetDisk" */;
+			buildPhases = (
+				2CDF4F9F2195B920004F2CB8 /* Sources */,
+				2CDF4FA02195B920004F2CB8 /* Frameworks */,
+				2CDF4FA12195B920004F2CB8 /* Headers */,
+				2CDF4FA22195B920004F2CB8 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = NetDisk;
+			productName = NetDisk;
+			productReference = 2CDF4FA42195B920004F2CB8 /* libNetDisk.dylib */;
+			productType = "com.apple.product-type.library.dynamic";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		2CDF4F9B2195B920004F2CB8 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0920;
+				ORGANIZATIONNAME = Johnson;
+				TargetAttributes = {
+					2CDF4FA32195B920004F2CB8 = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 2CDF4F9E2195B920004F2CB8 /* Build configuration list for PBXProject "NetDisk" */;
+			compatibilityVersion = "Xcode 8.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 2CDF4F9A2195B920004F2CB8;
+			productRefGroup = 2CDF4FA52195B920004F2CB8 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				2CDF4FA32195B920004F2CB8 /* NetDisk */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		2CDF4FA22195B920004F2CB8 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = /opt/MonkeyDev/Tools/mpack.sh;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		2CDF4F9F2195B920004F2CB8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2CDF4FAC2195B920004F2CB8 /* fishhook.c in Sources */,
+				2CDF4FB42195B920004F2CB8 /* NetDisk.m in Sources */,
+				2CDF4FA92195B920004F2CB8 /* AntiAntiDebug.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		2CDF4FB52195B920004F2CB8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(MonkeyDevPath)/MFrameworks",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(MonkeyDevPath)/MFrameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				MonkeyDevPath = /opt/MonkeyDev;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		2CDF4FB62195B920004F2CB8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(MonkeyDevPath)/MFrameworks",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(MonkeyDevPath)/MFrameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MonkeyDevPath = /opt/MonkeyDev;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		2CDF4FB82195B920004F2CB8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				EXECUTABLE_PREFIX = lib;
+				INSTALL_PATH = "@executable_path/libNetDisk.dylib";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-lsubstitute",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		2CDF4FB92195B920004F2CB8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				EXECUTABLE_PREFIX = lib;
+				INSTALL_PATH = "@executable_path/libNetDisk.dylib";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-lsubstitute",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		2CDF4F9E2195B920004F2CB8 /* Build configuration list for PBXProject "NetDisk" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2CDF4FB52195B920004F2CB8 /* Debug */,
+				2CDF4FB62195B920004F2CB8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2CDF4FB72195B920004F2CB8 /* Build configuration list for PBXNativeTarget "NetDisk" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2CDF4FB82195B920004F2CB8 /* Debug */,
+				2CDF4FB92195B920004F2CB8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 2CDF4F9B2195B920004F2CB8 /* Project object */;
+}
