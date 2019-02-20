@@ -15,6 +15,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2C5896A621A8EFFB00C5CF1D /* SpeedUpTrialPromptModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SpeedUpTrialPromptModel.h; sourceTree = "<group>"; };
+		2C5896A721A8EFFB00C5CF1D /* SpeedUpTrialModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SpeedUpTrialModel.h; sourceTree = "<group>"; };
+		2C5896A821A8EFFB00C5CF1D /* FileTransSpeedUpTrialManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FileTransSpeedUpTrialManager.h; sourceTree = "<group>"; };
+		2C5896A921A8EFFB00C5CF1D /* SpeedUpTrialPromptContext.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SpeedUpTrialPromptContext.h; sourceTree = "<group>"; };
 		2CDF4FA42195B920004F2CB8 /* libNetDisk.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libNetDisk.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		2CDF4FA82195B920004F2CB8 /* AntiAntiDebug.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = AntiAntiDebug.m; path = AntiAntiDebug/AntiAntiDebug.m; sourceTree = "<group>"; };
 		2CDF4FAB2195B920004F2CB8 /* fishhook.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = fishhook.c; path = fishhook/fishhook.c; sourceTree = "<group>"; };
@@ -38,6 +42,10 @@
 		2CDF4F9A2195B920004F2CB8 = {
 			isa = PBXGroup;
 			children = (
+				2C5896A821A8EFFB00C5CF1D /* FileTransSpeedUpTrialManager.h */,
+				2C5896A721A8EFFB00C5CF1D /* SpeedUpTrialModel.h */,
+				2C5896A921A8EFFB00C5CF1D /* SpeedUpTrialPromptContext.h */,
+				2C5896A621A8EFFB00C5CF1D /* SpeedUpTrialPromptModel.h */,
 				2CDF4FA62195B920004F2CB8 /* NetDisk */,
 				2CDF4FA52195B920004F2CB8 /* Products */,
 			);
@@ -156,7 +164,7 @@
 /* Begin PBXShellScriptBuildPhase section */
 		2CDF4FA22195B920004F2CB8 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
+			buildActionMask = 12;
 			files = (
 			);
 			inputPaths = (
@@ -165,7 +173,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = /opt/MonkeyDev/Tools/mpack.sh;
+			shellScript = "/opt/MonkeyDev/Tools/mpack.sh\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
