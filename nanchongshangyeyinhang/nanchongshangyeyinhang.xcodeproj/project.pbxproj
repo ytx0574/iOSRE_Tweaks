@@ -1,0 +1,378 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		2C6F42A623A0B66300A23693 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C6F42A523A0B66300A23693 /* UIKit.framework */; };
+		2C6F42A823A0B66300A23693 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C6F42A723A0B66300A23693 /* Foundation.framework */; };
+		2C6F42AA23A0B66300A23693 /* CydiaSubstrate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C6F42A923A0B66300A23693 /* CydiaSubstrate.framework */; };
+		2C6F42B323A0B66300A23693 /* nanchongshangyeyinhang.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2C6F42B223A0B66300A23693 /* nanchongshangyeyinhang.mm */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		2C6F42A223A0B66300A23693 /* nanchongshangyeyinhang.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = nanchongshangyeyinhang.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
+		2C6F42A523A0B66300A23693 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		2C6F42A723A0B66300A23693 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		2C6F42A923A0B66300A23693 /* CydiaSubstrate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CydiaSubstrate.framework; path = Library/Frameworks/CydiaSubstrate.framework; sourceTree = DEVELOPER_DIR; };
+		2C6F42AE23A0B66300A23693 /* control */ = {isa = PBXFileReference; lastKnownFileType = text; name = control; path = Package/DEBIAN/control; sourceTree = "<group>"; };
+		2C6F42B023A0B66300A23693 /* nanchongshangyeyinhang-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "nanchongshangyeyinhang-Prefix.pch"; sourceTree = "<group>"; };
+		2C6F42B123A0B66300A23693 /* nanchongshangyeyinhang.xm */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; path = nanchongshangyeyinhang.xm; sourceTree = "<group>"; };
+		2C6F42B223A0B66300A23693 /* nanchongshangyeyinhang.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = nanchongshangyeyinhang.mm; sourceTree = "<group>"; };
+		2C6F42B723A0B66300A23693 /* nanchongshangyeyinhang.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = nanchongshangyeyinhang.plist; path = Package/Library/MobileSubstrate/DynamicLibraries/nanchongshangyeyinhang.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		2C6F429E23A0B66300A23693 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2C6F42A623A0B66300A23693 /* UIKit.framework in Frameworks */,
+				2C6F42A823A0B66300A23693 /* Foundation.framework in Frameworks */,
+				2C6F42AA23A0B66300A23693 /* CydiaSubstrate.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		2C6F429723A0B66300A23693 = {
+			isa = PBXGroup;
+			children = (
+				2C6F42AB23A0B66300A23693 /* nanchongshangyeyinhang */,
+				2C6F42A423A0B66300A23693 /* Frameworks */,
+				2C6F42A323A0B66300A23693 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		2C6F42A323A0B66300A23693 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				2C6F42A223A0B66300A23693 /* nanchongshangyeyinhang.dylib */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		2C6F42A423A0B66300A23693 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				2C6F42A523A0B66300A23693 /* UIKit.framework */,
+				2C6F42A723A0B66300A23693 /* Foundation.framework */,
+				2C6F42A923A0B66300A23693 /* CydiaSubstrate.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		2C6F42AB23A0B66300A23693 /* nanchongshangyeyinhang */ = {
+			isa = PBXGroup;
+			children = (
+				2C6F42B123A0B66300A23693 /* nanchongshangyeyinhang.xm */,
+				2C6F42B223A0B66300A23693 /* nanchongshangyeyinhang.mm */,
+				2C6F42AC23A0B66300A23693 /* Package */,
+				2C6F42AF23A0B66300A23693 /* Supporting Files */,
+			);
+			path = nanchongshangyeyinhang;
+			sourceTree = "<group>";
+		};
+		2C6F42AC23A0B66300A23693 /* Package */ = {
+			isa = PBXGroup;
+			children = (
+				2C6F42AD23A0B66300A23693 /* DEBIAN */,
+				2C6F42B423A0B66300A23693 /* Library */,
+			);
+			name = Package;
+			sourceTree = "<group>";
+		};
+		2C6F42AD23A0B66300A23693 /* DEBIAN */ = {
+			isa = PBXGroup;
+			children = (
+				2C6F42AE23A0B66300A23693 /* control */,
+			);
+			name = DEBIAN;
+			sourceTree = "<group>";
+		};
+		2C6F42AF23A0B66300A23693 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				2C6F42B023A0B66300A23693 /* nanchongshangyeyinhang-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		2C6F42B423A0B66300A23693 /* Library */ = {
+			isa = PBXGroup;
+			children = (
+				2C6F42B523A0B66300A23693 /* MobileSubstrate */,
+			);
+			name = Library;
+			sourceTree = "<group>";
+		};
+		2C6F42B523A0B66300A23693 /* MobileSubstrate */ = {
+			isa = PBXGroup;
+			children = (
+				2C6F42B623A0B66300A23693 /* DynamicLibraries */,
+			);
+			name = MobileSubstrate;
+			sourceTree = "<group>";
+		};
+		2C6F42B623A0B66300A23693 /* DynamicLibraries */ = {
+			isa = PBXGroup;
+			children = (
+				2C6F42B723A0B66300A23693 /* nanchongshangyeyinhang.plist */,
+			);
+			name = DynamicLibraries;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		2C6F429F23A0B66300A23693 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		2C6F42A123A0B66300A23693 /* nanchongshangyeyinhang */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2C6F42BA23A0B66300A23693 /* Build configuration list for PBXNativeTarget "nanchongshangyeyinhang" */;
+			buildPhases = (
+				2C6F429C23A0B66300A23693 /* ShellScript */,
+				2C6F429D23A0B66300A23693 /* Sources */,
+				2C6F429E23A0B66300A23693 /* Frameworks */,
+				2C6F429F23A0B66300A23693 /* Headers */,
+				2C6F42A023A0B66300A23693 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = nanchongshangyeyinhang;
+			productName = nanchongshangyeyinhang;
+			productReference = 2C6F42A223A0B66300A23693 /* nanchongshangyeyinhang.dylib */;
+			productType = "com.apple.product-type.library.dynamic";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		2C6F429823A0B66300A23693 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 1020;
+				TargetAttributes = {
+					2C6F42A123A0B66300A23693 = {
+						CreatedOnToolsVersion = 10.2.1;
+					};
+				};
+			};
+			buildConfigurationList = 2C6F429B23A0B66300A23693 /* Build configuration list for PBXProject "nanchongshangyeyinhang" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 2C6F429723A0B66300A23693;
+			productRefGroup = 2C6F42A323A0B66300A23693 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				2C6F42A123A0B66300A23693 /* nanchongshangyeyinhang */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		2C6F429C23A0B66300A23693 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/opt/MonkeyDev/bin/md --xcbp-logos";
+		};
+		2C6F42A023A0B66300A23693 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/opt/MonkeyDev/bin/md --xcbp";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		2C6F429D23A0B66300A23693 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2C6F42B323A0B66300A23693 /* nanchongshangyeyinhang.mm in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		2C6F42B823A0B66300A23693 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				EXCLUDED_RECURSIVE_SEARCH_PATH_SUBDIRECTORIES = "*.nib *.lproj *.gch (*) .DS_Store CVS .svn .git .hg *.xcodeproj *.xcode *.pbproj *.pbxproj";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(MonkeyDevPath)/frameworks/**",
+					"$(MonkeyDevTheosPath)/vendor/lib",
+				);
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = "$(MonkeyDevTheosPath)/vendor/include/**";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LIBRARY_SEARCH_PATHS = "$(MonkeyDevTheosPath)/vendor/lib/**";
+				MonkeyDevPath = /opt/MonkeyDev;
+				MonkeyDevTheosPath = /opt/theos;
+				OTHER_CFLAGS = "-DTHEOS_INSTANCE_NAME=\"\\\"nanchongshangyeyinhang\\\"\"";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		2C6F42B923A0B66300A23693 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				EXCLUDED_RECURSIVE_SEARCH_PATH_SUBDIRECTORIES = "*.nib *.lproj *.gch (*) .DS_Store CVS .svn .git .hg *.xcodeproj *.xcode *.pbproj *.pbxproj";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(MonkeyDevPath)/frameworks/**",
+					"$(MonkeyDevTheosPath)/vendor/lib",
+				);
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = "$(MonkeyDevTheosPath)/vendor/include/**";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LIBRARY_SEARCH_PATHS = "$(MonkeyDevTheosPath)/vendor/lib/**";
+				MonkeyDevPath = /opt/MonkeyDev;
+				MonkeyDevTheosPath = /opt/theos;
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_CFLAGS = "-DTHEOS_INSTANCE_NAME=\"\\\"nanchongshangyeyinhang\\\"\"";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = NO;
+			};
+			name = Debug;
+		};
+		2C6F42BB23A0B66300A23693 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = XGZMSA76FK;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "nanchongshangyeyinhang/nanchongshangyeyinhang-Prefix.pch";
+				INSTALL_PATH = /Library/MobileSubstrate/DynamicLibraries;
+				MonkeyDevBuildPackageOnAnyBuild = NO;
+				MonkeyDevClearUiCacheOnInstall = NO;
+				MonkeyDevCopyOnBuild = NO;
+				MonkeyDevDeviceIP = "";
+				MonkeyDevDevicePassword = "";
+				MonkeyDevDevicePort = "";
+				MonkeyDevInstallOnAnyBuild = YES;
+				MonkeyDevInstallOnProfiling = YES;
+				MonkeyDevkillProcessOnInstall = SpringBoard;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		2C6F42BC23A0B66300A23693 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = XGZMSA76FK;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "nanchongshangyeyinhang/nanchongshangyeyinhang-Prefix.pch";
+				INSTALL_PATH = /Library/MobileSubstrate/DynamicLibraries;
+				MonkeyDevBuildPackageOnAnyBuild = NO;
+				MonkeyDevClearUiCacheOnInstall = NO;
+				MonkeyDevCopyOnBuild = NO;
+				MonkeyDevDeviceIP = "";
+				MonkeyDevDevicePassword = "";
+				MonkeyDevDevicePort = "";
+				MonkeyDevInstallOnAnyBuild = YES;
+				MonkeyDevInstallOnProfiling = YES;
+				MonkeyDevkillProcessOnInstall = SpringBoard;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		2C6F429B23A0B66300A23693 /* Build configuration list for PBXProject "nanchongshangyeyinhang" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2C6F42B823A0B66300A23693 /* Release */,
+				2C6F42B923A0B66300A23693 /* Debug */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2C6F42BA23A0B66300A23693 /* Build configuration list for PBXNativeTarget "nanchongshangyeyinhang" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2C6F42BB23A0B66300A23693 /* Release */,
+				2C6F42BC23A0B66300A23693 /* Debug */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 2C6F429823A0B66300A23693 /* Project object */;
+}
