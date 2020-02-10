@@ -1,0 +1,378 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		2C91BB2623F0262F00897538 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C91BB2523F0262F00897538 /* UIKit.framework */; };
+		2C91BB2823F0262F00897538 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C91BB2723F0262F00897538 /* Foundation.framework */; };
+		2C91BB2A23F0262F00897538 /* CydiaSubstrate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C91BB2923F0262F00897538 /* CydiaSubstrate.framework */; };
+		2C91BB3323F0262F00897538 /* LowPowerTest.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2C91BB3223F0262F00897538 /* LowPowerTest.mm */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		2C91BB2223F0262F00897538 /* LowPowerTest.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = LowPowerTest.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
+		2C91BB2523F0262F00897538 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		2C91BB2723F0262F00897538 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		2C91BB2923F0262F00897538 /* CydiaSubstrate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CydiaSubstrate.framework; path = Library/Frameworks/CydiaSubstrate.framework; sourceTree = DEVELOPER_DIR; };
+		2C91BB2E23F0262F00897538 /* control */ = {isa = PBXFileReference; lastKnownFileType = text; name = control; path = Package/DEBIAN/control; sourceTree = "<group>"; };
+		2C91BB3023F0262F00897538 /* LowPowerTest-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "LowPowerTest-Prefix.pch"; sourceTree = "<group>"; };
+		2C91BB3123F0262F00897538 /* LowPowerTest.xm */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; path = LowPowerTest.xm; sourceTree = "<group>"; };
+		2C91BB3223F0262F00897538 /* LowPowerTest.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = LowPowerTest.mm; sourceTree = "<group>"; };
+		2C91BB3723F0262F00897538 /* LowPowerTest.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = LowPowerTest.plist; path = Package/Library/MobileSubstrate/DynamicLibraries/LowPowerTest.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		2C91BB1E23F0262F00897538 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2C91BB2623F0262F00897538 /* UIKit.framework in Frameworks */,
+				2C91BB2823F0262F00897538 /* Foundation.framework in Frameworks */,
+				2C91BB2A23F0262F00897538 /* CydiaSubstrate.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		2C91BB1723F0262F00897538 = {
+			isa = PBXGroup;
+			children = (
+				2C91BB2B23F0262F00897538 /* LowPowerTest */,
+				2C91BB2423F0262F00897538 /* Frameworks */,
+				2C91BB2323F0262F00897538 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		2C91BB2323F0262F00897538 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				2C91BB2223F0262F00897538 /* LowPowerTest.dylib */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		2C91BB2423F0262F00897538 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				2C91BB2523F0262F00897538 /* UIKit.framework */,
+				2C91BB2723F0262F00897538 /* Foundation.framework */,
+				2C91BB2923F0262F00897538 /* CydiaSubstrate.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		2C91BB2B23F0262F00897538 /* LowPowerTest */ = {
+			isa = PBXGroup;
+			children = (
+				2C91BB3123F0262F00897538 /* LowPowerTest.xm */,
+				2C91BB3223F0262F00897538 /* LowPowerTest.mm */,
+				2C91BB2C23F0262F00897538 /* Package */,
+				2C91BB2F23F0262F00897538 /* Supporting Files */,
+			);
+			path = LowPowerTest;
+			sourceTree = "<group>";
+		};
+		2C91BB2C23F0262F00897538 /* Package */ = {
+			isa = PBXGroup;
+			children = (
+				2C91BB2D23F0262F00897538 /* DEBIAN */,
+				2C91BB3423F0262F00897538 /* Library */,
+			);
+			name = Package;
+			sourceTree = "<group>";
+		};
+		2C91BB2D23F0262F00897538 /* DEBIAN */ = {
+			isa = PBXGroup;
+			children = (
+				2C91BB2E23F0262F00897538 /* control */,
+			);
+			name = DEBIAN;
+			sourceTree = "<group>";
+		};
+		2C91BB2F23F0262F00897538 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				2C91BB3023F0262F00897538 /* LowPowerTest-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		2C91BB3423F0262F00897538 /* Library */ = {
+			isa = PBXGroup;
+			children = (
+				2C91BB3523F0262F00897538 /* MobileSubstrate */,
+			);
+			name = Library;
+			sourceTree = "<group>";
+		};
+		2C91BB3523F0262F00897538 /* MobileSubstrate */ = {
+			isa = PBXGroup;
+			children = (
+				2C91BB3623F0262F00897538 /* DynamicLibraries */,
+			);
+			name = MobileSubstrate;
+			sourceTree = "<group>";
+		};
+		2C91BB3623F0262F00897538 /* DynamicLibraries */ = {
+			isa = PBXGroup;
+			children = (
+				2C91BB3723F0262F00897538 /* LowPowerTest.plist */,
+			);
+			name = DynamicLibraries;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		2C91BB1F23F0262F00897538 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		2C91BB2123F0262F00897538 /* LowPowerTest */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2C91BB3A23F0262F00897538 /* Build configuration list for PBXNativeTarget "LowPowerTest" */;
+			buildPhases = (
+				2C91BB1C23F0262F00897538 /* ShellScript */,
+				2C91BB1D23F0262F00897538 /* Sources */,
+				2C91BB1E23F0262F00897538 /* Frameworks */,
+				2C91BB1F23F0262F00897538 /* Headers */,
+				2C91BB2023F0262F00897538 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = LowPowerTest;
+			productName = LowPowerTest;
+			productReference = 2C91BB2223F0262F00897538 /* LowPowerTest.dylib */;
+			productType = "com.apple.product-type.library.dynamic";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		2C91BB1823F0262F00897538 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 1020;
+				TargetAttributes = {
+					2C91BB2123F0262F00897538 = {
+						CreatedOnToolsVersion = 10.2.1;
+					};
+				};
+			};
+			buildConfigurationList = 2C91BB1B23F0262F00897538 /* Build configuration list for PBXProject "LowPowerTest" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 2C91BB1723F0262F00897538;
+			productRefGroup = 2C91BB2323F0262F00897538 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				2C91BB2123F0262F00897538 /* LowPowerTest */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		2C91BB1C23F0262F00897538 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/opt/MonkeyDev/bin/md --xcbp-logos";
+		};
+		2C91BB2023F0262F00897538 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/opt/MonkeyDev/bin/md --xcbp";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		2C91BB1D23F0262F00897538 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2C91BB3323F0262F00897538 /* LowPowerTest.mm in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		2C91BB3823F0262F00897538 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				EXCLUDED_RECURSIVE_SEARCH_PATH_SUBDIRECTORIES = "*.nib *.lproj *.gch (*) .DS_Store CVS .svn .git .hg *.xcodeproj *.xcode *.pbproj *.pbxproj";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(MonkeyDevPath)/frameworks/**",
+					"$(MonkeyDevTheosPath)/vendor/lib",
+				);
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = "$(MonkeyDevTheosPath)/vendor/include/**";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LIBRARY_SEARCH_PATHS = "$(MonkeyDevTheosPath)/vendor/lib/**";
+				MonkeyDevPath = /opt/MonkeyDev;
+				MonkeyDevTheosPath = /opt/theos;
+				OTHER_CFLAGS = "-DTHEOS_INSTANCE_NAME=\"\\\"LowPowerTest\\\"\"";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		2C91BB3923F0262F00897538 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				EXCLUDED_RECURSIVE_SEARCH_PATH_SUBDIRECTORIES = "*.nib *.lproj *.gch (*) .DS_Store CVS .svn .git .hg *.xcodeproj *.xcode *.pbproj *.pbxproj";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(MonkeyDevPath)/frameworks/**",
+					"$(MonkeyDevTheosPath)/vendor/lib",
+				);
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = "$(MonkeyDevTheosPath)/vendor/include/**";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LIBRARY_SEARCH_PATHS = "$(MonkeyDevTheosPath)/vendor/lib/**";
+				MonkeyDevPath = /opt/MonkeyDev;
+				MonkeyDevTheosPath = /opt/theos;
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_CFLAGS = "-DTHEOS_INSTANCE_NAME=\"\\\"LowPowerTest\\\"\"";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = NO;
+			};
+			name = Debug;
+		};
+		2C91BB3B23F0262F00897538 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = XGZMSA76FK;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "LowPowerTest/LowPowerTest-Prefix.pch";
+				INSTALL_PATH = /Library/MobileSubstrate/DynamicLibraries;
+				MonkeyDevBuildPackageOnAnyBuild = NO;
+				MonkeyDevClearUiCacheOnInstall = NO;
+				MonkeyDevCopyOnBuild = NO;
+				MonkeyDevDeviceIP = "";
+				MonkeyDevDevicePassword = "";
+				MonkeyDevDevicePort = 2222;
+				MonkeyDevInstallOnAnyBuild = YES;
+				MonkeyDevInstallOnProfiling = YES;
+				MonkeyDevkillProcessOnInstall = SpringBoard;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		2C91BB3C23F0262F00897538 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = XGZMSA76FK;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "LowPowerTest/LowPowerTest-Prefix.pch";
+				INSTALL_PATH = /Library/MobileSubstrate/DynamicLibraries;
+				MonkeyDevBuildPackageOnAnyBuild = NO;
+				MonkeyDevClearUiCacheOnInstall = NO;
+				MonkeyDevCopyOnBuild = NO;
+				MonkeyDevDeviceIP = "";
+				MonkeyDevDevicePassword = "";
+				MonkeyDevDevicePort = 2222;
+				MonkeyDevInstallOnAnyBuild = YES;
+				MonkeyDevInstallOnProfiling = YES;
+				MonkeyDevkillProcessOnInstall = SpringBoard;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		2C91BB1B23F0262F00897538 /* Build configuration list for PBXProject "LowPowerTest" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2C91BB3823F0262F00897538 /* Release */,
+				2C91BB3923F0262F00897538 /* Debug */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2C91BB3A23F0262F00897538 /* Build configuration list for PBXNativeTarget "LowPowerTest" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2C91BB3B23F0262F00897538 /* Release */,
+				2C91BB3C23F0262F00897538 /* Debug */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 2C91BB1823F0262F00897538 /* Project object */;
+}
