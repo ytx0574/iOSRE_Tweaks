@@ -5,7 +5,6 @@
 #endif
 
 #import <UIKit/UIKit.h>
-
 %hook ClassName
 
 + (id)sharedInstance
@@ -52,6 +51,7 @@
 @interface SpringBoard : NSObject
 - (void)addNewMethod;
 - (void)powerStateDidChange:(NSNotification *)noti;
+- (id)getBatterySaver;
 @end
 
 %hook SpringBoard
@@ -65,6 +65,11 @@
 
 //    [self performSelector:@selector(powerStateDidChange:) withObject:@YES];
     [self addNewMethod];
+
+//    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(30 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//        ((void (*) (id, SEL, long long, id *)) objc_msgSend) (self.getBatterySaver, @selector(setPowerMode:error:), 0x0, nil);
+//    });
+
 //    [NSClassFromString(@"PSLowPowerModeSettingsDetail") performSelector:@selector(setEnabled:) withObject:@YES];
 //    [self powerStateDidChange:NSNotification.alloc];
 }
@@ -76,31 +81,42 @@
 //    [NSClassFromString(@"PSLowPowerModeSettingsDetail") performSelector:@selector(setEnabled:) withObject:@YES];
 
     UIDevice.currentDevice.batteryMonitoringEnabled = YES;
-     if (!NSProcessInfo.processInfo.isLowPowerModeEnabled && [[UIDevice currentDevice] batteryState] == UIDeviceBatteryStateCharging && UIDevice.currentDevice.batteryLevel == 0.8f) {
-//    if (!NSProcessInfo.processInfo.isLowPowerModeEnabled && UIDevice.currentDevice.batteryLevel >= 0.8f) {
-        id batterySaver = objc_getAssociatedObject(self, _cmd);
-        if (!batterySaver) {
-            batterySaver = [NSClassFromString(@"_CDBatterySaver") performSelector:@selector(batterySaver)];
-            objc_setAssociatedObject(self, _cmd, batterySaver, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-        }
+     if (!NSProcessInfo.processInfo.isLowPowerModeEnabled && [[UIDevice currentDevice] batteryState] == UIDeviceBatteryStateCharging && (fabsf(UIDevice.currentDevice.batteryLevel * 100) == 80)) {
+//    if (!NSProcessInfo.processInfo.isLowPowerModeEnabled && (fabsf(UIDevice.currentDevice.batteryLevel * 100) == 80)) {
+//        id batterySaver = objc_getAssociatedObject(self, _cmd);
+//        if (!batterySaver) {
+//            batterySaver = [NSClassFromString(@"_CDBatterySaver") performSelector:@selector(batterySaver)];
+//            objc_setAssociatedObject(self, _cmd, batterySaver, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+//        }
         //performSelector无效, 带入参数有问题. 最好使用 invocation | msgSend
         //0关闭 1开启
 //        [batterySaver performSelector:@selector(setPowerMode:error:) withObject:[NSNumber numberWithLongLong:0x1] withObject:nil];
 
-        NSMethodSignature *signature = [[batterySaver class] instanceMethodSignatureForSelector:@selector(setPowerMode:error:)];
+        NSMethodSignature *signature = [[self.getBatterySaver class] instanceMethodSignatureForSelector:@selector(setPowerMode:error:)];
         NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:signature];
-        invocation.target = batterySaver;
+        invocation.target = self.getBatterySaver;
         invocation.selector = @selector(setPowerMode:error:);
         long long value = 0x1;
         [invocation setArgument:&value atIndex:2];
         [invocation invoke];
 
-//        ((Bool (*) (id, SEL, long long, id *)) objc_msgSend) (batterySaver, @selector(setPowerMode:error:), 0x1, nil);
+//        ((void (*) (id, SEL, long long, id *)) objc_msgSend) (batterySaver, @selector(setPowerMode:error:), 0x1, nil);
 
          dispatch_async(dispatch_get_main_queue(), ^{
              [[[UIAlertView alloc] initWithTitle:@"充电中到80%, 自动开启低电量模式" message:nil delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
          });
+     }
+}
+
+%new
+- (id)getBatterySaver
+{
+    id batterySaver = objc_getAssociatedObject(self, _cmd);
+    if (!batterySaver) {
+        batterySaver = [NSClassFromString(@"_CDBatterySaver") performSelector:@selector(batterySaver)];
+        objc_setAssociatedObject(self, _cmd, batterySaver, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
     }
+    return batterySaver;
 }
 
 //- (void)devicePowerStateDidChange
